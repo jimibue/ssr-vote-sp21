@@ -14,8 +14,9 @@ const Items = (props) => {
     return (
         <>
           <div className='items-container'>
-          <h1>{header ? header : 'Items'}</h1>
-          {renderItems()}
+            <h1>{header ? header : 'Items'}</h1>
+            <p>.items-container</p>
+            {renderItems()}
           </div>
         </>
     )
