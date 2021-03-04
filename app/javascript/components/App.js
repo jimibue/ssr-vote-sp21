@@ -1,10 +1,8 @@
 import React, {useState} from 'react'
 import Items from './Items'
 import axios from 'axios'
-const dummyData = [
-    {id:1,category:'cat 1', name:'jon', likes:2, description:'desashdfkjahdkfjhasldkfhak a jkahs dfjha kdhf akjshdf kjas dfkjha sdkjfhaksjdhf kjashd fkjasdkfjh aksjdhf kajshd fkjasdkfjh aksjdhf kjashdf kjahsd fkjhaskdjfh kajsdc'},
-    {id:1, category:'cat 2', name:'jon2', likes:3, description:'desc1'},
-]
+import ItemForm from './ItemForm'
+
 const App = () => {
     const handleError = (error) =>{
         console.log(error)
@@ -49,6 +47,22 @@ const App = () => {
         }
     }
 
+    const addItem = async (obj) => {
+
+       console.log(obj)
+        // want to add to db
+        try{
+        let response = await axios.post('/items', {...obj, likes:0 })
+         //then update UI(need to in app.js)
+         setItems([response.data, ...items])
+        }
+        catch(err){
+            handleError(err)
+        }
+
+       
+    }
+
     // const getItemsNoAsync = () => {
     //     // promiseCall().then((res)=>{}).catch((err)=>{})
     //     axios.get('/items').then((res)=>{
@@ -68,6 +82,7 @@ const App = () => {
         <h1>App</h1>
         <button disabled={loading} onClick={getItems}>{loading ? 'loading': 'getItems'}</button>
         {/* <button disabled={loading} onClick={getItemsNoAsync}>{loading ? 'loading': 'getItems'}</button> */}
+        <ItemForm addItem={addItem}/>
         <Items deleteItem={deleteItem} header='Items Yo' items={items}/>
     </>
     )
