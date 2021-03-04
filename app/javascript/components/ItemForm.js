@@ -5,7 +5,7 @@ const ItemForm = (props) => {
     const [category, setCategory] = useState('')
     const [description, setDescription] = useState('')
 
-    const { addItem } = props
+    const { addItem, setShowForm } = props
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -37,7 +37,9 @@ const ItemForm = (props) => {
               value={description}
               onChange={(e)=> setDescription(e.target.value)}     
             />
-            <button>add</button>
+            <button type='submit'>add</button>
+            {setShowForm && <button  type="button" onClick={()=> setShowForm(false)}>cancel</button>}
+            {/* {setShowForm && <div onClick={()=> setShowForm(false)}>cancel</div>} */}
         </form>
     )
 }

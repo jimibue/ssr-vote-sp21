@@ -82,7 +82,8 @@ const App = () => {
         <h1>App</h1>
         <button disabled={loading} onClick={getItems}>{loading ? 'loading': 'getItems'}</button>
         {/* <button disabled={loading} onClick={getItemsNoAsync}>{loading ? 'loading': 'getItems'}</button> */}
-        <ItemForm addItem={addItem}/>
+        <ItemForm  addItem={addItem}/>
+        {/* passing deleteItem function here as 'deleteItem' props */}
         <Items deleteItem={deleteItem} header='Items Yo' items={items}/>
     </>
     )
