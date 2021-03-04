@@ -6,7 +6,7 @@ import ItemForm from './ItemForm'
 const App = () => {
     const handleError = (error) => {
         console.log(error)
-        alert('error getting item check console')
+        alert('error occurred check console')
     }
 
     // const [getter/currentState, funtiontosetGetter] = useState(intialValue)
@@ -84,8 +84,7 @@ const App = () => {
 
             setItems(updateItems)
         } catch (err) {
-
-
+            handleError(err)
         }
     }
 

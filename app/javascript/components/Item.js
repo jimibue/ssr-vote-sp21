@@ -19,6 +19,7 @@ const Item = (props) => {
                 <div className='item-footer'>
                     <p onClick={() => deleteItem(id)}>delete</p>
                     <p onClick={() => setShowForm(true)}>edit</p>
+                    <a href={`/items/${id}/edit`}> get edit form from server</a>
                     <p>Id: {id}</p>
                 </div>
             </>

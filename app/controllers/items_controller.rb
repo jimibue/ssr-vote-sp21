@@ -27,11 +27,30 @@ class ItemsController < ApplicationController
      end
     end
 
+    ## server side render react component
+    def edit
+      @item = Item.find(params[:id])
+
+      render component: 'EditItem', props: {item: @item}
+    end
+
+    def update
+      @item = Item.find(params[:id])
+       
+      if(@item.update(items_params))
+          render json: @item
+      else
+         render json: {error: 422, message: @item.errors.full_messages}
+      end
+    end
+
     def destroy
       @item = Item.find(params[:id]).destroy
 
       render json: @item
     end
+
+  
 
     private
 
